@@ -73,8 +73,8 @@ function PostForm({ post }) {
   }, [watch, slugTransform, setValue]);
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="felx flex-wrap">
-      <div className="w-2/3 px-2">
+    <form onSubmit={handleSubmit(submit)} className="flex flex-col lg:flex-row">
+      <div className="w-full lg:w-2/3 px-2">
         <Input
           label="Title: "
           placeholder="Title"
@@ -103,7 +103,7 @@ function PostForm({ post }) {
           defaultValue={getValues("content")}
         />
       </div>
-      <div className="w-1/3 px-2">
+      <div className="w-full lg:w-1/3 px-2">
         <Input
           label="Featured Image: "
           type="file"
