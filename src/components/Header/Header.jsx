@@ -34,19 +34,19 @@ function Header() {
     <header>
       <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-red-500 h-3"></div>
       <Container>
-        <nav className="flex py-2">
-          <div className="w-28 flex items-center">
+        <nav className="md:flex py-2">
+          <div className="w-28 flex items-center mt-2 md:mt-0">
             <Link to="/">
               <Logo />
             </Link>
           </div>
-          <ul className="flex ml-auto">
+          <ul className="md:flex ml-auto">
             {navItems.map((item) =>
               item.active ? (
                 <li key={item.name}>
                   <p
                     onClick={() => navigate(item.slug)}
-                    className="inline-block mx-4 py-2 mt-[2px] cursor-pointer text-[#1c1d20] font-poppins font-semibold "
+                    className="inline-block md:mx-4 pt-3 md:py-2 mt-[2px] cursor-pointer text-[#1c1d20] font-poppins font-semibold "
                   >
                     {item.name}
                   </p>
@@ -56,7 +56,7 @@ function Header() {
             {!authStatus && (
               <li>
                 <Link to="/signup">
-                  <button className="inline-block ml-4 mt-1 px-5 py-1 border-[3px] border-[#1c1d20] rounded-lg text-[#1c1d20] font-poppins font-semibold hover:bg-[#1c1d20] hover:text-white duration-200">
+                  <button className="inline-block md:ml-4 mt-3 md:mt-1 px-5 py-1 border-[3px] border-[#1c1d20] rounded-lg text-[#1c1d20] font-poppins font-semibold hover:bg-[#1c1d20] hover:text-white duration-200">
                     Signup
                   </button>
                 </Link>

@@ -12,7 +12,7 @@ function LogoutBtn() {
   };
   return (
     <button
-      className="inline-block ml-4 mt-1 px-5 py-1 border-[3px] border-[#1c1d20] rounded-lg text-[#1c1d20] font-poppins font-semibold hover:bg-[#1c1d20] hover:text-white duration-200"
+      className="inline-block md:ml-4 mt-3 md:mt-1 px-5 py-1 border-[3px] border-[#1c1d20] rounded-lg text-[#1c1d20] font-poppins font-semibold hover:bg-[#1c1d20] hover:text-white duration-200"
       onClick={logoutHandler}
     >
       Logout
