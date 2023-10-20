@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Logo, LogoutBtn } from "../index";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
+
+  const [open, setOpen] = useState(false);
 
   const navItems = [
     {
@@ -40,7 +42,17 @@ function Header() {
               <Logo />
             </Link>
           </div>
-          <ul className="md:flex ml-auto">
+          <div
+            onClick={() => setOpen(!open)}
+            className="text-3xl absolute md:hidden right-4 top-6 cursor-pointer"
+          >
+            <ion-icon name={open ? "close-sharp" : "menu-sharp"}></ion-icon>
+          </div>
+          <ul
+            className={`md:flex ml-auto  pb-5 md:pb-0 absolute md:static w-full  md:w-auto bg-white transition-all duration-500 ${
+              open ? "" : "top-[-200px]"
+            }`}
+          >
             {navItems.map((item) =>
               item.active ? (
                 <li key={item.name}>
