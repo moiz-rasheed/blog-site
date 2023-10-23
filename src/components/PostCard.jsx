@@ -13,9 +13,9 @@ function PostCard({ $id, title, featuredImage }) {
             className="w-full h-full object-cover object-center absolute group-hover:scale-105  duration-100"
           />
         </div>
-        <h2 className="text-md font-bold line-clamp-2 p-3 uppercase">
-          {title}
-        </h2>
+        <div className="p-3 overflow-hidden">
+          <h2 className="text-md font-bold line-clamp-3">{title}</h2>
+        </div>
       </div>
     </Link>
   );

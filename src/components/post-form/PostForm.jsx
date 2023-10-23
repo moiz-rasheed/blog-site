@@ -50,14 +50,32 @@ function PostForm({ post }) {
     }
   };
 
+  // const slugTransform = useCallback((value) => {
+  //   if (value && typeof value === "string")
+  //     return value
+  //       .trim()
+  //       .toLowerCase()
+  //       .replace(/[^a-zA-Z0-9 -]/g, "")
+  //       .replace(/\s+/g, "-")
+  //       .replace(/-+/g, "-");
+  //   return "";
+  // }, []);
+
   const slugTransform = useCallback((value) => {
-    if (value && typeof value === "string")
-      return value
+    if (value && typeof value === "string") {
+      let slug = value
         .trim()
         .toLowerCase()
         .replace(/[^a-zA-Z0-9 -]/g, "")
         .replace(/\s+/g, "-")
         .replace(/-+/g, "-");
+
+      if (slug.length > 35) {
+        slug = slug.slice(0, 35);
+      }
+
+      return slug;
+    }
     return "";
   }, []);
 
