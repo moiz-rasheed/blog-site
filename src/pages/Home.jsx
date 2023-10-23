@@ -13,28 +13,28 @@ function Home() {
   }, []);
 
   return (
-    <div className="w-full py-8 font-poppins">
+    <div className="w-full py-8 font-poppins text-[#1c1d20]">
       <Container>
         <div className="text-center mb-10 px-3 sm:px-10 md:px-20 lg:px-32">
           <p className="font-bold text-3xl mb-2">
             Unlock Your Potential with Expert Insights
           </p>
-          <p className="">
+          <p>
             Welcome to our blog, where we empower you with valuable knowledge,
             expert advice, and inspirational stories. Discover the keys to
             personal growth, success, and a fulfilling life as you embark on
             this journey with us.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-5xl mx-auto gap-4 md:gap-6">
-          {posts.map((post, index) => (
-            <div
-              key={post.$id}
-              // className={index === 0 ? "lg:col-span-2 lg:row-span-2" : ""}
-            >
-              <PostCard {...post} />
-            </div>
-          ))}
+        <div className="max-w-5xl mx-auto">
+          <p className="font-bold text-lg mb-4">Recent Blog Posts</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+            {posts.map((post) => (
+              <div key={post.$id}>
+                <PostCard {...post} />
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </div>
