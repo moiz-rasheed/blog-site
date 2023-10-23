@@ -26,9 +26,12 @@ function Home() {
             this journey with us.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {posts.map((post) => (
-            <div key={post.$id}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-5xl mx-auto gap-4 md:gap-6">
+          {posts.map((post, index) => (
+            <div
+              key={post.$id}
+              // className={index === 0 ? "lg:col-span-2 lg:row-span-2" : ""}
+            >
               <PostCard {...post} />
             </div>
           ))}

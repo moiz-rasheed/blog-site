@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function PostCard({ $id, title, featuredImage }) {
   return (
     <Link to={`/post/${$id}`}>
-      <div className="w-full flex flex-col border border-gray-400 rounded-md overflow-hidden group">
+      <div className="w-full flex flex-col outline-offset-4 hover:outline group">
         <div className="relative overflow-hidden w-full h-52">
           <img
             src={appwriteService.getFilePreview(featuredImage)}
