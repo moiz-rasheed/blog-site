@@ -49,7 +49,7 @@ function Header() {
             <ion-icon name={open ? "close-sharp" : "menu-sharp"}></ion-icon>
           </div>
           <ul
-            className={`md:flex ml-auto pb-5 md:pb-0 absolute md:static w-full  md:w-auto bg-white transition-all duration-500 ${
+            className={`md:flex ml-auto pb-5 md:pb-0 absolute md:static w-[94%] z-10 md:w-auto bg-white transition-all duration-500 ${
               open ? "" : "top-[-200px]"
             }`}
           >
@@ -57,7 +57,10 @@ function Header() {
               item.active ? (
                 <li key={item.name}>
                   <p
-                    onClick={() => navigate(item.slug)}
+                    onClick={() => {
+                      navigate(item.slug);
+                      setOpen(!open);
+                    }}
                     className="inline-block md:mx-4 pt-3 md:py-2 mt-[2px] cursor-pointer text-[#1c1d20] font-poppins font-semibold hover:underline underline-offset-2"
                   >
                     {item.name}
