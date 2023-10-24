@@ -31,29 +31,32 @@ function Post() {
   };
 
   return post ? (
-    <div className="py-8">
+    <div className="pt-4 pb-8 font-poppins text-[#1c1d20] max-w-4xl mx-auto">
       <Container>
-        <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-          <img
-            src={appwriteService.getFilePreview(post.featuredImage)}
-            alt={post.title}
-            className="rounded-xl"
-          />
+        <div className="flex justify-between flex-col sm:flex-row mb-4">
+          <h1 className="text-2xl font-semibold mb-2 sm:mb-0">{post.title}</h1>
           {isAuthor && (
-            <div className="relative right-6 top-6">
+            <div className="flex gap-1 justify-end">
               <Link to={`/edit-post/${post.$id}`}>
-                <Button bgColor="bg-green-500" className="mr-3">
-                  Edit
-                </Button>
+                <div className="border-2 border-[#1c1d20] text-2xl p-3 rounded-full h-[3.2rem] w-[3.2rem] hover:bg-[#1c1d20] hover:text-white duration-200">
+                  <ion-icon name="create-outline"></ion-icon>
+                </div>
               </Link>
-              <Button bgColor="bg-red-500" onClick={deletePost}>
-                Delete
-              </Button>
+              <div
+                className="border-2 border-[#1c1d20] text-2xl p-3 rounded-full h-[3.2rem] w-[3.2rem] hover:bg-[#1c1d20] hover:text-white duration-200"
+                onClick={deletePost}
+              >
+                <ion-icon name="trash-outline"></ion-icon>
+              </div>
             </div>
           )}
         </div>
-        <div className="w-full mb-6">
-          <h1 className="text-2xl font-bold">{post.title}</h1>
+        <div className="w-full flex justify-center mb-4">
+          <img
+            src={appwriteService.getFilePreview(post.featuredImage)}
+            alt={post.title}
+            className=""
+          />
         </div>
         <div className="browser-css">{parse(post.content)}</div>
       </Container>

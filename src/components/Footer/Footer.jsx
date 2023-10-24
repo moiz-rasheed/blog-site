@@ -71,8 +71,10 @@ function Footer() {
       </div>
       <div className="py-6 bg-[#1c1d20] text-gray-400 text-center text-sm sm:text-base font-light">
         © 2023{" "}
-        <span className="hover:underline underline-offset-2">BlogApp™</span>.
-        All Rights Reserved.
+        <span className="hover:underline underline-offset-2 cursor-pointer">
+          BlogApp™
+        </span>
+        . All Rights Reserved.
       </div>
     </footer>
   );
