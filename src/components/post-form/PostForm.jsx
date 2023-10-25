@@ -50,17 +50,6 @@ function PostForm({ post }) {
     }
   };
 
-  // const slugTransform = useCallback((value) => {
-  //   if (value && typeof value === "string")
-  //     return value
-  //       .trim()
-  //       .toLowerCase()
-  //       .replace(/[^a-zA-Z0-9 -]/g, "")
-  //       .replace(/\s+/g, "-")
-  //       .replace(/-+/g, "-");
-  //   return "";
-  // }, []);
-
   const slugTransform = useCallback((value) => {
     if (value && typeof value === "string") {
       let slug = value
@@ -91,11 +80,13 @@ function PostForm({ post }) {
   }, [watch, slugTransform, setValue]);
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-col lg:flex-row">
-      <div className="w-full lg:w-2/3 px-2">
+    <form
+      onSubmit={handleSubmit(submit)}
+      className="font-poppins text-[#1c1d20]"
+    >
+      <div className="w-full">
         <Input
           label="Title: "
-          placeholder="Title"
           className="mb-4"
           {...register("title", {
             required: true,
@@ -103,7 +94,6 @@ function PostForm({ post }) {
         />
         <Input
           label="Slug: "
-          placeholder="Slug"
           className="mb-4"
           {...register("slug", {
             required: true,
@@ -114,18 +104,18 @@ function PostForm({ post }) {
             });
           }}
         />
-        <RTE
-          label="Content"
-          name="content"
-          control={control}
-          defaultValue={getValues("content")}
+        <Select
+          options={["active", "inactive"]}
+          label="Status: "
+          className="mb-4"
+          {...register("status", {
+            required: true,
+          })}
         />
-      </div>
-      <div className="w-full lg:w-1/3 px-2">
         <Input
           label="Featured Image: "
           type="file"
-          className="mb-4"
+          className="mb-8 focus:bg-white border-none pl-1 file:rounded-lg file:font-poppins file:font-semibold duration-200 file:bg-[#1c1d20] file:text-white file:border-none file:py-2 file:px-4 file:hover:bg-[#303134] file:mr-3"
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("image", {
             required: !post,
@@ -140,20 +130,21 @@ function PostForm({ post }) {
             />
           </div>
         )}
-        <Select
-          options={["active", "inactive"]}
-          label="Status"
-          className="mb-4"
-          {...register("status", {
-            required: true,
-          })}
+        <RTE
+          label="Content"
+          name="content"
+          control={control}
+          defaultValue={getValues("content")}
         />
+      </div>
+      <div className="w-full mt-8 flex justify-end">
         <Button
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}
-          className="w-full"
+          bgColorHover={post ? "hover:bg-green-800" : undefined}
+          className="w-32"
         >
-          {post ? "Update" : "Submit"}
+          {post ? "UPDATE" : "SUBMIT"}
         </Button>
       </div>
     </form>
