@@ -72,7 +72,7 @@ function Header() {
               <li>
                 <Link to="/signup">
                   <button className="inline-block md:ml-4 mt-3 md:mt-1 px-5 py-1 border-[3px] border-[#1c1d20] rounded-lg text-[#1c1d20] font-poppins font-semibold hover:bg-[#1c1d20] hover:text-white duration-200">
-                    Signup
+                    Sign Up
                   </button>
                 </Link>
               </li>
