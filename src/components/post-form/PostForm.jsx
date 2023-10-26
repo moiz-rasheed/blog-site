@@ -22,12 +22,12 @@ export default function PostForm({ post }) {
   const submit = async (data) => {
     if (post) {
       const file = data.image[0]
-        ? appwriteService.uploadFile(data.image[0])
+        ? await appwriteService.uploadFile(data.image[0])
         : null;
       if (file) {
         appwriteService.deleteFile(post.featuredImage);
       }
-      const dbPost = appwriteService.updatePost(post.$id, {
+      const dbPost = await appwriteService.updatePost(post.$id, {
         ...data,
         featuredImage: file ? file.$id : undefined,
       });
@@ -74,9 +74,7 @@ export default function PostForm({ post }) {
         setValue("slug", slugTransform(value.title, { shouldValidate: true }));
       }
     });
-    return () => {
-      subscription.unsubscribe();
-    };
+    return () => subscription.unsubscribe();
   }, [watch, slugTransform, setValue]);
 
   return (
@@ -138,12 +136,7 @@ export default function PostForm({ post }) {
         />
       </div>
       <div className="w-full mt-8 flex justify-end">
-        <Button
-          type="submit"
-          bgColor={post ? "bg-green-500" : undefined}
-          bgColorHover={post ? "hover:bg-green-800" : undefined}
-          className="w-32"
-        >
+        <Button type="submit" className="w-32">
           {post ? "UPDATE" : "SUBMIT"}
         </Button>
       </div>

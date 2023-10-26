@@ -4,7 +4,7 @@ import { Container, PostForm } from "../components/index";
 import { useNavigate, useParams } from "react-router-dom";
 
 function EditPost() {
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState(null);
   const navigate = useNavigate();
   const { slug } = useParams();
 
@@ -26,7 +26,7 @@ function EditPost() {
         <h1 className="font-poppins font-bold text-center text-3xl mb-10">
           Update Blog Post
         </h1>
-        <PostForm />
+        <PostForm post={post} />
       </Container>
     </div>
   ) : null;
