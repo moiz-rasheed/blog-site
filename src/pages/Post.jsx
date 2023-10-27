@@ -33,12 +33,12 @@ function Post() {
   };
 
   return post ? (
-    <div className="pt-4 pb-8 font-poppins text-[#1c1d20] max-w-4xl mx-auto">
+    <div className="pt-4 pb-8 font-poppins text-[#1c1d20] max-w-3xl mx-auto">
       <Container>
         <div className="flex justify-between flex-col sm:flex-row mb-4">
           <h1 className="text-2xl font-semibold mb-2 sm:mb-0">{post.title}</h1>
           {isAuthor && (
-            <div className="flex gap-1 justify-end">
+            <div className="flex gap-1 justify-end ml-2">
               <Link to={`/edit-post/${post.$id}`}>
                 <div className="border-2 border-[#1c1d20] text-2xl p-3 rounded-full h-[3.2rem] w-[3.2rem] hover:bg-[#1c1d20] hover:text-white duration-200">
                   <ion-icon name="create-outline"></ion-icon>

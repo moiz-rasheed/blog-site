@@ -28,13 +28,13 @@ function Signup() {
   return (
     <Container>
       <div className="flex mt-20 items-center justify-center w-full font-poppins text-[#1c1d20]">
-        <div className={`mx-auto w-full max-w-md`}>
+        <div className={`mx-auto w-full max-w-sm`}>
           <div className="mb-2 flex justify-center">
             <span className="inline-block w-28">
               <Logo />
             </span>
           </div>
-          <p className="text-center mt-3 text-lg leading-tight">
+          <p className="text-center mt-3 leading-tight">
             Welcome, Sign up to create account
           </p>
           {error && <p className="text-red-600 text-center mt-8">{error}</p>}
