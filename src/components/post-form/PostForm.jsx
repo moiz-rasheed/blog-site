@@ -113,14 +113,14 @@ export default function PostForm({ post }) {
         <Input
           label="Featured Image: "
           type="file"
-          className="mb-8 focus:bg-white border-none pl-1 file:rounded-lg file:font-poppins file:font-semibold duration-200 file:bg-[#1c1d20] file:text-white file:border-none file:py-2 file:px-4 file:hover:bg-[#303134] file:mr-3"
+          className="mb-4 focus:bg-white border-none pl-1 file:rounded-lg file:font-poppins file:font-semibold duration-200 file:bg-[#1c1d20] file:text-white file:border-none file:py-2 file:px-4 file:hover:bg-[#303134] file:mr-3"
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("image", {
             required: !post,
           })}
         />
         {post && (
-          <div className="w-full mb-4">
+          <div className="w-full mb-8">
             <img
               src={appwriteService.getFilePreview(post.featuredImage)}
               alt={post.title}

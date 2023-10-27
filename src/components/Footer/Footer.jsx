@@ -40,18 +40,24 @@ function Footer() {
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 max-w-5xl mx-auto">
             <div className="flex justify-center md:justify-start">
-              <div className="w-28 flex items-center">
+              <div
+                className="w-28 flex items-center"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <Link to="/">
                   <LogoGray />
                 </Link>
               </div>
             </div>
-            <ul className="flex justify-center flex-col sm:flex-row gap-4 sm:gap-8">
+            <ul className="flex justify-center flex-col sm:flex-row gap-2 md:gap-4 sm:gap-8">
               {FooterItems.map((item) =>
                 item.active ? (
                   <li key={item.name}>
                     <p
-                      onClick={() => navigate(item.slug)}
+                      onClick={() => {
+                        navigate(item.slug);
+                        window.scrollTo(0, 0);
+                      }}
                       className="inline-block text-gray-400 cursor-pointer w-full text-center font-light text-sm sm:text-base hover:underline underline-offset-2"
                     >
                       {item.name}
@@ -60,7 +66,7 @@ function Footer() {
                 ) : null
               )}
             </ul>
-            <div className="text-gray-400 text-xl flex items-center justify-end gap-2">
+            <div className="text-gray-400 text-xl flex items-center mb-3 md:mb-0 justify-center md:justify-end gap-2">
               <ion-icon name="logo-facebook"></ion-icon>
               <ion-icon name="logo-instagram"></ion-icon>
               <ion-icon name="logo-twitter"></ion-icon>
