@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import appwriteService from "../appwrite/appwrite_config";
 import parse from "html-react-parser";
-import { Container, Button } from "../components/index";
+import { Container, Loader } from "../components/index";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 function Post() {
@@ -10,7 +10,8 @@ function Post() {
   const navigate = useNavigate();
   const { slug } = useParams();
   const userData = useSelector((state) => state.auth.userData);
-  const isAuthor = post && userData ? post.userId === userData.$id : false;
+  // const isAuthor = post && userData ? post.userId === userData.$id : false;
+  const [isAuthor, setIsAuthor] = useState(false);
 
   useEffect(() => {
     if (slug) {
@@ -22,6 +23,14 @@ function Post() {
       });
     } else navigate("/");
   }, [slug, navigate]);
+
+  useEffect(() => {
+    if (post && userData) {
+      setIsAuthor(post.userId === userData.$id);
+    } else {
+      setIsAuthor(false);
+    }
+  }, [post, userData]);
 
   const deletePost = () => {
     appwriteService.deletePost(post.$id).then((status) => {
@@ -63,7 +72,11 @@ function Post() {
         <div className="browser-css">{parse(post.content)}</div>
       </Container>
     </div>
-  ) : null;
+  ) : (
+    <div className="flex items-center justify-center flex-col h-[75vh] px-8">
+      <Loader />
+    </div>
+  );
 }
 
 export default Post;
