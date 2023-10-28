@@ -1,11 +1,15 @@
 import React from "react";
 
-function Loader() {
+function Loader({
+  height = "h-14",
+  width = "w-14",
+  fillColor = "fill-[#1c1d20]",
+}) {
   return (
     <div role="status">
       <svg
         aria-hidden="true"
-        className="inline w-14 h-14 mr-2 text-gray-200 animate-spin fill-[#1c1d20]"
+        className={`inline ${height} ${width} mr-2 text-gray-200 animate-spin ${fillColor}`}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

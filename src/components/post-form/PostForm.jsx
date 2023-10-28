@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, Select, RTE } from "../index";
+import { Button, Input, Select, RTE, Loader } from "../index";
 import appwriteService from "../../appwrite/appwrite_config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -18,8 +18,11 @@ export default function PostForm({ post }) {
 
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  const [loading, setLoading] = useState(false);
 
   const submit = async (data) => {
+    setLoading(true);
+
     if (post) {
       const file = data.image[0]
         ? await appwriteService.uploadFile(data.image[0])
@@ -137,9 +140,15 @@ export default function PostForm({ post }) {
         />
       </div>
       <div className="w-full mt-8 flex justify-end">
-        <Button type="submit" className="w-32">
-          {post ? "UPDATE" : "SUBMIT"}
-        </Button>
+        {loading ? (
+          <Button className="w-32">
+            <Loader height="h-5" width="w-5" fillColor="fill-white" />
+          </Button>
+        ) : (
+          <Button type="submit" className="w-32">
+            {post ? "UPDATE" : "SUBMIT"}
+          </Button>
+        )}
       </div>
     </form>
   );
