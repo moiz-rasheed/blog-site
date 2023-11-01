@@ -16,7 +16,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="w-full py-8 font-poppins text-[#1c1d20]">
+    <div className="w-full py-8 mb-8 font-poppins text-[#1c1d20]">
       {loading ? (
         <div className="flex items-center justify-center flex-col h-[75vh] px-8">
           <Loader />
@@ -25,7 +25,7 @@ function Home() {
         <>
           {posts.length > 0 ? (
             <Container>
-              <div className="text-center mb-10 px-3 sm:px-10 md:px-20 lg:px-32">
+              <div className="text-center mb-6 sm:mb-10 px-3 sm:px-10 md:px-20 lg:px-32">
                 <p className="font-bold text-3xl mb-2">
                   Unlock Your Potential with Expert Insights
                 </p>
@@ -37,7 +37,9 @@ function Home() {
                 </p>
               </div>
               <div className="max-w-5xl mx-auto">
-                <p className="font-bold text-lg mb-4">Recent Blog Posts</p>
+                <p className="font-bold text-lg text-center sm:text-start mb-6 sm:mb-4">
+                  Recent Blog Posts
+                </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                   {posts.map((post) => (
                     <div key={post.$id}>
