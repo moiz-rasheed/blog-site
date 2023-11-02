@@ -11,6 +11,7 @@ function Post() {
   const { slug } = useParams();
   const userData = useSelector((state) => state.auth.userData);
   const isAuthor = post && userData ? post.userId === userData.$id : false;
+  console.log("userData", userData);
   // const [isAuthor, setIsAuthor] = useState(false);
 
   useEffect(() => {
